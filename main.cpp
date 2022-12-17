@@ -23,7 +23,7 @@ public:
 	{
 		// Cache core, player pool here.
 		core = c;
-		c->printLn("Empty component loaded.");
+		c->printLn("Empty component template loaded.");
 	}
 
 	void onInit(IComponentList* components) override
@@ -45,11 +45,13 @@ public:
 
 	void free() override
 	{
+		// Deletes the component.
 		delete this;
 	}
 
 	void reset() override
 	{
+		// Resets data when the mode changes.
 	}
 };
 
