@@ -1,6 +1,6 @@
 #include <sdk.hpp>
 
-class EmptyTemplate final : IComponent
+class EmptyTemplate final : public IComponent
 {
 private:
 	ICore* core_ = nullptr;
@@ -22,7 +22,7 @@ public:
 	void onLoad(ICore* c) override
 	{
 		// Cache core, player pool here.
-		core = c;
+		core_ = c;
 		c->printLn("Empty component template loaded.");
 	}
 
