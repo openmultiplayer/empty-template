@@ -1,6 +1,6 @@
 #include <sdk.hpp>
 
-class EmptyComponent final : IComponent
+class EmptyTemplate final : IComponent
 {
 private:
 	ICore* core_ = nullptr;
@@ -11,7 +11,7 @@ public:
 
 	StringView componentName() const override
 	{
-		return "Empty component";
+		return "Empty Template";
 	}
 
 	SemanticVersion componentVersion() const override
@@ -39,7 +39,7 @@ public:
 	{
 	}
 
-	~EmptyComponent()
+	~EmptyTemplate()
 	{
 	}
 
@@ -57,5 +57,5 @@ public:
 
 COMPONENT_ENTRY_POINT()
 {
-	return new EmptyComponent();
+	return new EmptyTemplate();
 }
