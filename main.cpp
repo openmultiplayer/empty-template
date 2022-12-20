@@ -6,17 +6,28 @@
  *  The original code is copyright (c) 2022, open.mp team and contributors.
  */
 
+// Required for most of open.mp.
 #include <sdk.hpp>
 
+// This should use an abstract interface if it is to be passed to other components.  Like the files
+// in `<Server/Components/>` you would share only this base class and keep the implementation
+// private.
 class EmptyTemplate final : public IComponent
 {
 private:
+	// Hold a reference to the main server core.
 	ICore* core_ = nullptr;
 
 public:
-	// https://open.mp/uid
+	// Visit https://open.mp/uid to generate a new unique ID.
 	PROVIDE_UID(/* UID GOES HERE */);
 
+	// When this component is destroyed we need to tell any linked components this it is gone.
+	~EmptyTemplate()
+	{
+	}
+
+	// Implement the main component API.
 	StringView componentName() const override
 	{
 		return "Empty Template";
@@ -31,7 +42,7 @@ public:
 	{
 		// Cache core, player pool here.
 		core_ = c;
-		c->printLn("Empty component template loaded.");
+		core_->printLn("Empty component template loaded.");
 	}
 
 	void onInit(IComponentList* components) override
@@ -47,10 +58,6 @@ public:
 	{
 	}
 
-	~EmptyTemplate()
-	{
-	}
-
 	void free() override
 	{
 		// Deletes the component.
@@ -63,6 +70,7 @@ public:
 	}
 };
 
+// Automatically called when the compiled binary is loaded.
 COMPONENT_ENTRY_POINT()
 {
 	return new EmptyTemplate();
