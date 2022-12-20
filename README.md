@@ -1,5 +1,5 @@
- open.mp Empty Compnent Template
-=================================
+ open.mp Empty Component Template
+==================================
 
 This is a simple component start point template.  It does nothing except initialise a component that can be loaded by the server.
 
